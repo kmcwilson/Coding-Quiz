@@ -1,0 +1,32 @@
+header {
+    font-weight:bold;
+    font-size:xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 50px;
+}
+
+.Slide-deck-1 {
+    text-align: center;
+}
+
+#first-paragraph{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    padding: 20px 200px;
+}
+#start-quiz {
+    background-color: purple;
+    padding: 15px;
+   text-align:center;
+    border-radius: 20px;
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+}
+
+#start-quiz:hover{
+    background-color: blueviolet;
+    text-decoration: underline;
+    
+}
+
