@@ -1,34 +1,54 @@
-let startQuiz= document.querySelector('#start-quiz');
+let startQuizButton= document.querySelector('#start-quiz');
 let timeEl= document.querySelector('.time');
 let mainEl=document.getElementById("main");
 let footerEl=document.getElementById('footer-message');
 let secondsLeft= 80;
 let reveal= document.getElementById('highscore-form')
+let currentQuestion= 0;
 
 
-//let score= timeLeft
-
-startQuiz.addEventListener("click", function() {
+startQuizButton.addEventListener("click", function() {
     document.querySelector('.Slide-deck-1').style.display= "none";
+    displayQuestion();
 })
 
-/*function setTime(){
-    let timerInterval= setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent= 'Time: '+ secondsLeft;
+//function startQuiz() {
+    
+//}
 
-        if (response!== answer){ 
-            secondsLeft -15;
-
-        } else {
-            secondsLeft--;
-        }
-    if (secondsLeft >= 0) {
-        reveal.removeAttribute("hidden")
+//    function setTime(){
+//     let timerInterval= setInterval(function() {
+//         secondsLeft--;
+//         timeEl.textContent= 'Time: '+ secondsLeft;
+//     if (secondsLeft >= 0) {
+//         reveal.removeAttribute("hidden")
         
+//     }
+//     } , 1000 );
+// }
+
+function displayQuestion(){
+let testQuestions= document.createElement ('p');
+testQuestions.textContent=questions[currentQuestion].text;
+mainEl.appendChild(testQuestions);
+for (let i=0; i<4; i++){
+    let choiceButton= document.createElement ('button');
+    choiceButton.classList.add ('answer');
+    choiceButton.textContent=questions[currentQuestion].choices[i];
+    mainEl.appendChild(choiceButton);
+    choiceButton.addEventListener("click", function(){
+        if (i == questions[currentQuestion].answer){
+             footerEl.textContent= 'Correct!';
+} else { 
+    footerEl.textContent='Wrong!';
+    secondsLeft -=15;
     }
-    } , 1000 );
-}
+mainEl.innerHTML=''; 
+currentQuestion++;
+displayQuestion();
+})
+}}
+
 
 const questions = [ 
  {text: ' What is the name of the element where you place your Javascript code on an HTML document??',
@@ -48,15 +68,15 @@ choices: [ 'A string', 'A number', 'An Array', 'A list'],
 answer: 2 }, ] 
 
 
-for (let i=0; i < questions.length; i++) {
-    mainEl.textContent= questions[i];
-    if (response == answer) {
-        footerEl.textContent= 'Correct!';
-} else { footerEl.textContent='Wrong!'};
+// for (let i=0; i < questions.length; i++) {
+//     mainEl.textContent= questions[i];
+//     if (response == answer) {
+//         footerEl.textContent= 'Correct!';
+// } else { footerEl.textContent='Wrong!'};
 
 
 
-} */
+// } */
         
 
 
