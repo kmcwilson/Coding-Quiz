@@ -6,11 +6,17 @@ let secondsLeft= 80;
 let reveal= document.getElementById('highscore-form')
 let currentQuestion= 0;
 
+reveal.style.display="none";
 
 startQuizButton.addEventListener("click", function() {
     document.querySelector('.Slide-deck-1').style.display= "none";
     displayQuestion();
 })
+
+function revealForm(){
+    reveal.style.display='';
+    footerEl.textContent='';
+}
 
 //function startQuiz() {
     
@@ -46,8 +52,15 @@ for (let i=0; i<4; i++){
 mainEl.innerHTML=''; 
 currentQuestion++;
 displayQuestion();
+if (questions.length >= 4){
+    revealForm();
+}
 })
+
 }}
+
+
+
 
 
 const questions = [ 
@@ -66,6 +79,8 @@ answer: 2 },
 {text: 'When we store groups of data inside a variable it is called a what?',
 choices: [ 'A string', 'A number', 'An Array', 'A list'],
 answer: 2 }, ] 
+
+
 
 
 // for (let i=0; i < questions.length; i++) {
