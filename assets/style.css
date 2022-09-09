@@ -30,7 +30,35 @@ header {
     
 }
 
-.answers {
-    
+.questions{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-align: center; 
+}
+
+.answer {
+    background-color: purple;
+    padding: 15px;
+   text-align:center;
+    border-radius: 20px;
+    font-size: medium;
+    font-weight: bold;
+    color: white; 
+    text-align: center;
+    display:block;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+
+.answer:hover{
+    background-color: blueviolet;
+    text-decoration: underline;
+}
+
+#footer-message {
+    color: gray;
+    font-style: italic;
+    font-size: medium;    
 }
 

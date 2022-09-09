@@ -3,14 +3,16 @@ let timeEl= document.querySelector('.time');
 let mainEl=document.getElementById("main");
 let footerEl=document.getElementById('footer-message');
 let secondsLeft= 80;
-let reveal= document.getElementById('highscore-form')
+let reveal= document.getElementById('highscore-form');
 let currentQuestion= 0;
+let highScore= document.getElementById('highscore');
 
 reveal.style.display="none";
 
 startQuizButton.addEventListener("click", function() {
     document.querySelector('.Slide-deck-1').style.display= "none";
     displayQuestion();
+    startQuiz();
 })
 
 function revealForm(){
@@ -18,24 +20,27 @@ function revealForm(){
     footerEl.textContent='';
 }
 
-//function startQuiz() {
+function startQuiz() {
     
 //}
 
 //    function setTime(){
-//     let timerInterval= setInterval(function() {
-//         secondsLeft--;
-//         timeEl.textContent= 'Time: '+ secondsLeft;
-//     if (secondsLeft >= 0) {
-//         reveal.removeAttribute("hidden")
-        
-//     }
-//     } , 1000 );
-// }
+let timeInterval= setInterval(function() {
+ secondsLeft--;
+ timeEl.textContent= 'Time: '+ secondsLeft;
+ if (secondsLeft > questions.length){
+ timeInterval.pause();
+ highScore.InnerHTML = secondsLeft; 
+}} , 1000 );
+}
 
 function displayQuestion(){
+    if (currentQuestion == questions.length){
+        revealForm();
+    }
 let testQuestions= document.createElement ('p');
 testQuestions.textContent=questions[currentQuestion].text;
+testQuestions.classList.add('questions');
 mainEl.appendChild(testQuestions);
 for (let i=0; i<4; i++){
     let choiceButton= document.createElement ('button');
@@ -52,12 +57,10 @@ for (let i=0; i<4; i++){
 mainEl.innerHTML=''; 
 currentQuestion++;
 displayQuestion();
-if (questions.length >= 4){
-    revealForm();
-}
 })
 
 }}
+
 
 
 
@@ -80,18 +83,5 @@ answer: 2 },
 choices: [ 'A string', 'A number', 'An Array', 'A list'],
 answer: 2 }, ] 
 
-
-
-
-// for (let i=0; i < questions.length; i++) {
-//     mainEl.textContent= questions[i];
-//     if (response == answer) {
-//         footerEl.textContent= 'Correct!';
-// } else { footerEl.textContent='Wrong!'};
-
-
-
-// } */
-        
 
 
