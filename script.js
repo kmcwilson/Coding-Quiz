@@ -7,7 +7,6 @@ let reveal= document.getElementById('highscore-form');
 let currentQuestion= 0;
 let highScore= document.getElementById('highscore');
 let scores = [];
-let finalScore= timeInterval;
 
 reveal.style.display="none";
 
@@ -20,36 +19,36 @@ startQuizButton.addEventListener("click", function() {
 function revealForm(){
  reveal.style.display='';
  footerEl.textContent='';
- for (var i=0; i < scores.length; i++){
-     let score = scores[i];
+//  for (var i=0; i < scores.length; i++){
+//      let score = scores[i];
 
-    let li= document.createElement('li');
-    li.textContent= score;
-     li.setAttribute('data-index', i);
+//     let li= document.createElement('li');
+//     li.textContent= score;
+//      li.setAttribute('data-index', i);
 
-    highScore.appendChild(li);
+//     highScore.appendChild(li);
 
- }
+//  }
  }
 
 function startQuiz() {
     
-//}
-
-//    function setTime(){
 let timeInterval= setInterval(function() {
  secondsLeft--;
  timeEl.textContent= 'Time: '+ secondsLeft;
- if (secondsLeft > questions.length){
-   finalScore.textContent= secondsLeft;
-   timeInterval.clearInterval();
+//  if (secondsLeft >= questions.length){
+//    highScore.textContent= secondsLeft;
+//    timeInterval.clearInterval();
   //highScore.InnerHTML = secondsLeft; 
-}} , 1000 );
+} , 1000 );
 }
 
 function displayQuestion(){
     if (currentQuestion == questions.length){
         revealForm();
+        timeInterval.clearInterval();
+        highScore.textContent= secondsLeft;
+
     }
 let testQuestions= document.createElement ('p');
 testQuestions.textContent=questions[currentQuestion].text;
@@ -71,7 +70,6 @@ mainEl.innerHTML='';
 currentQuestion++;
 displayQuestion();
 })
-
 }}
 
 
