@@ -36,6 +36,11 @@ function startQuiz() {
 let timeInterval= setInterval(function() {
  secondsLeft--;
  timeEl.textContent= 'Time: '+ secondsLeft;
+ if(currentQuestion==questions.length){
+    highScore.innerHTML=secondsLeft;
+    timeInterval.clearInterval();
+
+ }
 //  if (secondsLeft >= questions.length){
 //    highScore.textContent= secondsLeft;
 //    timeInterval.clearInterval();
@@ -46,9 +51,6 @@ let timeInterval= setInterval(function() {
 function displayQuestion(){
     if (currentQuestion == questions.length){
         revealForm();
-        timeInterval.clearInterval();
-        highScore.textContent= secondsLeft;
-
     }
 let testQuestions= document.createElement ('p');
 testQuestions.textContent=questions[currentQuestion].text;
