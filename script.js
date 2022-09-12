@@ -6,6 +6,8 @@ let secondsLeft= 80;
 let reveal= document.getElementById('highscore-form');
 let currentQuestion= 0;
 let highScore= document.getElementById('highscore');
+let scores = [];
+let finalScore= timeInterval;
 
 reveal.style.display="none";
 
@@ -16,9 +18,19 @@ startQuizButton.addEventListener("click", function() {
 })
 
 function revealForm(){
-    reveal.style.display='';
-    footerEl.textContent='';
-}
+ reveal.style.display='';
+ footerEl.textContent='';
+ for (var i=0; i < scores.length; i++){
+     let score = scores[i];
+
+    let li= document.createElement('li');
+    li.textContent= score;
+     li.setAttribute('data-index', i);
+
+    highScore.appendChild(li);
+
+ }
+ }
 
 function startQuiz() {
     
@@ -29,8 +41,9 @@ let timeInterval= setInterval(function() {
  secondsLeft--;
  timeEl.textContent= 'Time: '+ secondsLeft;
  if (secondsLeft > questions.length){
- timeInterval.pause();
- highScore.InnerHTML = secondsLeft; 
+   finalScore.textContent= secondsLeft;
+   timeInterval.clearInterval();
+  //highScore.InnerHTML = secondsLeft; 
 }} , 1000 );
 }
 
