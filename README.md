@@ -8,8 +8,6 @@ or wrong. If the user answers a question incorrectly, 15 seconds is taken away f
 
 ## Screenshot
 ![coding-starter](https://user-images.githubusercontent.com/110554091/190029121-da0d2d7c-f10a-4d42-b5d6-04754f4cd181.jpg)
-![screenshot](assets\![coding-starter](https://user-images.githubusercontent.com/110554091/190028939-a8e39ab1-45be-47db-89ac-ecc4568de043.jpg)
-images\coding-starter.jpg)
 ![screenshot](asse![questions](https://user-images.githubusercontent.com/110554091/190028960-77196e1c-c267-402e-b64b-37c22e2a83a9.jpg)
 ts\images\list-of-scores.jpg) 
 
