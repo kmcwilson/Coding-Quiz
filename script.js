@@ -17,27 +17,37 @@ highScoreForm.style.display = "none";
 startQuizButton.addEventListener("click", function () {
     document.querySelector(".Slide-deck-1").style.display = "none";
     displayQuestion();
+    let timeInterval = setInterval(function () {
+        secondsLeft--; 
+        if(secondsLeft===0){
+            endGame();
+        }
+        timeEl.textContent = "Time: " + secondsLeft;
+    }, 1000);   
 });
 
 
 //Setting the time interval when the start Quiz button is clicked
-let timeInterval = setInterval(function () {
-    secondsLeft--; 
-    if(secondsLeft===0){
-        endGame();
-    }
-    timeEl.textContent = "Time: " + secondsLeft;
-}, 1000);
+// let timeInterval = setInterval(function () {
+//     secondsLeft--; 
+//     if(secondsLeft===0){
+//         endGame();
+//     }
+//     timeEl.textContent = "Time: " + secondsLeft;
+// }, 1000);
+
+//Placing an if statement inside my displayQuestions function for when the questions have ended.
 
 function displayQuestion() {
     if (currentQuestion == questions.length) {
         endGame();
     }
+//Creating a paragraph element called test questions and using it to display the current question text
     let testQuestions = document.createElement("p");
     if (currentQuestion <= 4) {
         testQuestions.textContent = questions[currentQuestion].text;
     }
-
+//Adding class list to the element entitled questions and getting the main element to append the child test questions within HTML
     testQuestions.classList.add("questions");
     mainEl.appendChild(testQuestions);
     for (let i = 0; i < 4; i++) {
