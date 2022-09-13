@@ -16,18 +16,22 @@ highScoreForm.style.display = "none";
 // This is adding a click function to the Start quiz button
 startQuizButton.addEventListener("click", function () {
     document.querySelector(".Slide-deck-1").style.display = "none";
-    displayQuestion();  
+    displayQuestion(); 
+ 
 });
 
 
 //Setting the time interval when the start Quiz button is clicked
+
 let timeInterval = setInterval(function () {
     secondsLeft--; 
     if(secondsLeft===0){
         endGame();
+        clearInterval(timeInterval);
     }
     timeEl.textContent = "Time: " + secondsLeft;
 }, 1000);
+
 
 //Placing an if statement inside my displayQuestions function for when the questions have ended.
 
