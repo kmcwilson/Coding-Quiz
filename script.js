@@ -20,7 +20,7 @@ startQuizButton.addEventListener("click", function () {
 });
 
 
-// Setting the time interval when the start Quiz button is clicked
+//Setting the time interval when the start Quiz button is clicked
 let timeInterval = setInterval(function () {
     secondsLeft--; 
     if(secondsLeft===0){
@@ -66,13 +66,13 @@ function displayQuestion() {
             displayQuestion();
         });
     }
-}
+} 
 
 function endGame() {
     highScoreForm.style.display = "";
     footerEl.textContent = "";
-
     clearInterval(timeInterval);
+    document.querySelectorAll('.answer').style.display='none';
     displayScores();
 }
 
@@ -154,9 +154,7 @@ const questions = [
         answer: 2,
     },
 ];
-// init();
-// storeScores();
-// displayScores();
+
 
 
 

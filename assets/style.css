@@ -62,3 +62,25 @@ header {
     font-size: medium;    
 }
 
+#save {
+    background-color: purple;
+    padding: 15px;
+    border-radius: 20px;
+    color: white; 
+}
+
+#save:hover{
+    background-color: blueviolet;
+    text-decoration: underline; 
+}
+
+#your-score {
+    padding: 15px;
+    margin: 20px;
+}
+
+#score-text{
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
