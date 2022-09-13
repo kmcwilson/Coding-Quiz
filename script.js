@@ -8,6 +8,7 @@ let currentQuestion = 0;
 let highScores = document.getElementById("high-score");
 let scoreList=document.getElementById('score-list');
 let scores = [];
+let scoreInput= document.getElementById('your-score');
 
 reveal.style.display = "none";
 
@@ -67,17 +68,42 @@ function displayScores() {
     scoreList.innerHTML= '';
     highScores.textContent=scores.length;
       for (var i=0; i < scores.length; i++){
+    let score= scores[i];
         let li= document.createElement('li');
-         li.textContent= scores[i];
+         li.textContent= score;
          li.setAttribute('data-index', i);
   
-        totalScores.appendChild(li);
+        scoreList.appendChild(li);
   
       }}
 
-function storeScores(){
 
+function init(){
+    var storedScores= JSON.parse(localStorage.getItem('scores'));
+    if (storedScores!==null) {
+        scores=storedScores;
+    }
+    displayScores();
 }
+
+ function storeScores(){
+    localStorage.setItem('scores', JSON.stringify(scores));
+ }
+
+reveal.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    let scoreText= scoreInput.value.trim();
+
+    if(scoreText===''){
+        return;
+    }
+
+    scores.push(scoreText);
+    scoreInput.value='';
+    storeScores();
+    displayScores();
+});
 
 
 const questions = [
@@ -122,6 +148,8 @@ const questions = [
     answer: 2,
   },
 ];
+init();
+storeScores();
 
 
 
