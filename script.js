@@ -16,16 +16,16 @@ highScoreForm.style.display = "none";
 // This is adding a click function to the Start quiz button
 startQuizButton.addEventListener("click", function () {
     document.querySelector(".Slide-deck-1").style.display = "none";
-    displayQuestion(); 
- 
+    displayQuestion();
+
 });
 
 
 //Setting the time interval when the start Quiz button is clicked
 
 let timeInterval = setInterval(function () {
-    secondsLeft--; 
-    if(secondsLeft===0){
+    secondsLeft--;
+    if (secondsLeft === 0) {
         endGame();
         clearInterval(timeInterval);
     }
@@ -39,47 +39,47 @@ function displayQuestion() {
     if (currentQuestion == questions.length) {
         endGame();
     }
-//Creating a paragraph element called test questions and using it to display the current question text
+    //Creating a paragraph element called test questions and using it to display the current question text
     let testQuestions = document.createElement("p");
     if (currentQuestion <= 4) {
         testQuestions.textContent = questions[currentQuestion].text;
     }
-//Adding class list to the element entitled questions and getting the main element to append the child test questions within HTML
+    //Adding class list to the element entitled questions and getting the main element to append the child test questions within HTML
     testQuestions.classList.add("questions");
     mainEl.appendChild(testQuestions);
     //Creating  for loop to go through the questions
     for (let i = 0; i < 4; i++) {
-    //Creating a choice button for answers in multiple choice by creating an element within the main element
+        //Creating a choice button for answers in multiple choice by creating an element within the main element
         let choiceButton = document.createElement("button");
-    //Adding  class to this choice button so that I am able to style it.
+        //Adding  class to this choice button so that I am able to style it.
         choiceButton.classList.add("answer");
         if (currentQuestion <= 4) {
-        //Choice button is now to display the choices located within the questions constant
+            //Choice button is now to display the choices located within the questions constant
             choiceButton.textContent = questions[currentQuestion].choices[i];
         }
-    //Appending the child choice button to the main element
+        //Appending the child choice button to the main element
 
         mainEl.appendChild(choiceButton);
-    //Adding an event listener to the choice button to ensure that it states correct when the choice reflects the answer within the current question and wrong with anything else.
+        //Adding an event listener to the choice button to ensure that it states correct when the choice reflects the answer within the current question and wrong with anything else.
         choiceButton.addEventListener("click", function () {
             if (i == questions[currentQuestion].answer) {
                 footerEl.textContent = "Correct!";
             } else {
-        //If a question is answer incorrectly it will display wrong and will take way 15 seconds.
+                //If a question is answer incorrectly it will display wrong and will take way 15 seconds.
                 footerEl.textContent = "Wrong!";
-                secondsLeft -= 15; 
-                if(secondsLeft<=0){
+                secondsLeft -= 15;
+                if (secondsLeft <= 0) {
                     endGame();
                     return;
                 }
             }
-//This ensures that the main element inner HTML is a blank string and then it will go through to the next question
+            //This ensures that the main element inner HTML is a blank string and then it will go through to the next question
             mainEl.innerHTML = "";
             currentQuestion++;
             displayQuestion();
         });
     }
-} 
+}
 
 //This takes the form that I have hidden and shows it once the game as ended and uses the display question function
 
@@ -87,32 +87,32 @@ function endGame() {
     highScoreForm.style.display = "";
     footerEl.textContent = "";
     clearInterval(timeInterval);
-    document.querySelectorAll('.answer').style.display='none';
+    document.querySelectorAll('.answer').style.display = 'none';
     displayScores();
 }
 
 //This function will take the scores listed in my global variable and will create an li element for each of the scores that are listed by the player
 
 function displayScores() {
-    const scores= loadHighScores();
+    const scores = loadHighScores();
     scoreList.innerHTML = '';
     highScores.textContent = scores.length;
     for (var i = 0; i < scores.length; i++) {
         let li = document.createElement('li');
-        li.textContent = scores[i].name+'  '+scores[i].score;
+        li.textContent = scores[i].name + '  ' + scores[i].score;
         scoreList.appendChild(li);
 
     }
 }
 // Loading the scores to the local storage function 
-function loadHighScores(){
+function loadHighScores() {
     return JSON.parse(localStorage.getItem('scores')) || [];
 }
 
 //This function takes the initials a player has placed and then attaches their score to what is left in the secondsLeft variable.This is then set into local stoarge.
 function storeScore(initials) {
-    const temp= loadHighScores();
-    temp.push({name:initials, score:secondsLeft});
+    const temp = loadHighScores();
+    temp.push({ name: initials, score: secondsLeft });
     localStorage.setItem('scores', JSON.stringify(temp));
 }
 //Adding an event listerner function to my save button on my form and trimming the value of the text, if the value is nothing then it will return to original screen.
