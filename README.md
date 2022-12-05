@@ -15,6 +15,6 @@ or wrong. If the user answers a question incorrectly, 15 seconds is taken away f
 
 ## Link to live website
 
- [Link to live website](https://kmcwilson.github.io/challenge-4-coding-quiz/)
+ [Link to live website](https://kmcwilson.github.io/Coding-Quiz/)
 
 
