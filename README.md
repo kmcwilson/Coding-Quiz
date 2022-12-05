@@ -1,4 +1,4 @@
-# Challenge 4 Coding Quiz
+# Coding Quiz
 
 ## Description
 
